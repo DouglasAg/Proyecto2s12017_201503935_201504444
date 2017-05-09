@@ -1,0 +1,18 @@
+{% extends "plan.html" %}
+
+{% block UserName %}
+{{ request.session.usuario }}
+{% endblock %}
+
+{% block titulo %}
+{{ request.session.usuario }}
+{% endblock %}
+
+{% block contenido %}
+<input type="hidden" id="nombre" value="{{ request.session.usuario }}">
+<h1> A ingresado a Drive</h1>
+
+
+{% endblock %}
+{% block scripts %}
+{% endblock %}

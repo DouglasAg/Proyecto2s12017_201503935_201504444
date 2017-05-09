@@ -1,0 +1,100 @@
+{% extends "plan.html" %}
+
+{% block UserName %}
+{{ request.session.usuario }}
+{% endblock %}
+
+{% block titulo %}
+{{ request.session.usuario }}
+{% endblock %}
+
+{% block contenido %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <form  id="carpeta" action="/nuevacarpeta/" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="usuario" value="{{ request.session.usuario }}">
+                        <p><h2>Crear Nueva Carpeta</h2></p>
+                        <p>
+                            <strong>Nombre:</strong>
+                        </p>
+
+                        <p>
+                            <input type="text" placeholder="Nombre de Carpeta" required id="nombre" class="form-control"/>
+                        </p>
+                        <p>
+                            <strong>Ruta:</strong>
+                        </p>
+                        <p>
+                            <input type="text" placeholder="Ruta" name="ruta" class="form-control"/>
+                        </p>
+                        
+                        <p>
+                            
+                            <center>
+                                <button type="submit" class="button button-block"/>
+                                <a class="btn btn-default btn-lg"><i class="glyphicon glyphicon-folder-close"></i> <span class="network-name">Crear</span></a>
+                                </button>
+                            </center>
+
+                                
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <form  id="ar" action="/cargararchivo/" method="POST" >
+                        {% csrf_token %}
+                        <input type="hidden" id="nombre" value="{{ request.session.usuario }}">
+                        <p><h2>Agregar Nueva Archivo</h2></p>
+                        <p>
+                            <strong>Seleccionar:</strong>
+                        </p>
+
+                        <p>
+                            <input type="file" name="arch">
+                        </p>
+                        <p>
+                            <strong>Ruta:</strong>
+                        </p>
+                        <p>
+                            <input type="text" placeholder="ruta" id="path" class="form-control"/>
+                        </p>                      
+                        <p>                         
+                            <center>
+                                <button type="submit" class="button button-block"/>
+                                <a href="" class="btn btn-default btn-lg"><i class="glyphicon glyphicon-file"></i> <span class="network-name">Añadir</span></a>
+                                </button>
+                                
+                            </center>                              
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+
+{% endblock %}
+{% block scripts %}
+{% endblock %}
